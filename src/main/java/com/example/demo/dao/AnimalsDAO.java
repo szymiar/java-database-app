@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -44,12 +45,19 @@ public class AnimalsDAO {
     }
 
     public Animal get(int id){
+        Object[] args={id};
+        String sql="SELECT * FROM ANIMALS WHERE ANIMAL_ID = "+args[0];
+        Animal animal =jdbcTemplate.queryForObject(sql,BeanPropertyRowMapper.newInstance(Animal.class));
+        return animal;
 
-        return null;
+
     }
 
     public void update(Animal animal){
-
+        String sql = "UPDATE ANIMALS SET NAME=:NAME, SPECIES=:SPECIES, RACE=:RACE, DATE_OF_BIRTH=:DATE_OF_BIRTH WHERE ANIMAL_ID=:ANIMAL_ID";
+        BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(animal);
+        NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate);
+        template.update(sql,param);
     }
 
     public void delete(int id){
