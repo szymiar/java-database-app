@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>People</title>
+    <title>People and their animals</title>
     <style>
 table {
 border-collapse: collapse;
@@ -21,31 +21,30 @@ tr:nth-child(even) {background-color: #f2f2f2}
 </head>
 <body>
 <div align="center">
-    <h1>PERSONS</h1>
+    <h1>ADDRESSES</h1>
 
-    <a href = "/addPerson">Enter new Person</a>
-    <a href = "/editPerson">Edit person information</a>
+    <a href = "/new">Enter new address</a>
 
     <a href = "/backHomePage">Home page</a>
 
     <table border="1" cellpadding="10">
         <thead>
         <tr>
-            <th>PERSON_ID</th>
-            <th>NAME</th>
-            <th>SURNAME</th>
-            <th>BIRTH_DATE</th>
             <th>ADDRESS_ID</th>
+            <th>STREET</th>
+            <th>APT_NUMBER</th>
+            <th>CODE</th>
+            <th>CITY</th>
         </tr>
         </thead>
 
         <tbody>
-        <tr th:each = "PERSON : ${person2List}">
-            <td th:text="${PERSON.PERSON_ID}">PERSON_ID</td>
-            <td th:text="${PERSON.NAME}">NAME</td>
-            <td th:text="${PERSON.SURNAME}">SURNAME</td>
-            <td th:text="${PERSON.BIRTH_DATE}">BIRTH_DATE</td>
-            <td th:text="${PERSON.ADDRESS_ID}">ADDRESS_ID</td>
+        <tr th:each = "ADDRESS : ${listAddress}">
+            <td th:text="${ADDRESS.ADDRESS_ID}">ADDRESS_ID</td>
+            <td th:text="${ADDRESS.STREET}">STREET</td>
+            <td th:text="${ADDRESS.APT_NUMBER}">APT_NUMBER</td>
+            <td th:text="${ADDRESS.CODE}">CODE</td>
+            <td th:text="${ADDRESS.CITY}">CITY</td>
         </tr>
         </tbody>
 

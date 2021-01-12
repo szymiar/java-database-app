@@ -1,9 +1,11 @@
 package com.example.demo.api;
 
 import com.example.demo.dao.AddressesDAO;
+import com.example.demo.dao.AnimalsDAO;
 import com.example.demo.dao.LoginsDAO;
 import com.example.demo.dao.Person2DAO;
 import com.example.demo.model.Address;
+import com.example.demo.model.Animal;
 import com.example.demo.model.Login;
 import com.example.demo.model.Person2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,20 +27,29 @@ public class AddressController {
     @Autowired
     private Person2DAO person2DAO;
 
+    @Autowired
+    private AnimalsDAO animalsDAO;
+
     private LoginsDAO loginsDAO= new LoginsDAO();
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
     @RequestMapping("/HomePage")
     public String viewHomePage(Model model){
-    List<Address> listAddress=addressesDAO.list();
-    model.addAttribute("listAddress",listAddress);
 
     return "index";
 
     }
+    @RequestMapping("/viewAddresses")
+    public String viewAddresses(Model model){
+        List<Address> listAddress=addressesDAO.list();
+        model.addAttribute("listAddress",listAddress);
 
-    @RequestMapping("/persons")
+        return "addresses";
+
+    }
+
+    @RequestMapping("/viewPersons")
     public String viewPersons(Model model){
             List<Person2> person2List =  person2DAO.list();
             model.addAttribute("person2List",person2List);
@@ -46,6 +57,25 @@ public class AddressController {
             return "persons";
 
     }
+
+
+    @RequestMapping("/viewAnimals")
+    public String viewAnimals(Model model){
+        List<Animal> animalsList =  animalsDAO.list();
+        model.addAttribute("animalsList",animalsList);
+
+        return "animals";
+
+    }
+
+    @RequestMapping("/addAnimal")
+    public String showAddAnimal(Model model){
+        Animal animal=new Animal();
+        model.addAttribute("animal",animal);
+
+        return "add_animal";
+    }
+
 
     @RequestMapping("/addPerson")
     public String showAddPerson(Model model){
@@ -59,13 +89,19 @@ public class AddressController {
     public String savePerson(@ModelAttribute("person") Person2 person){
         person2DAO.save(person);
 
-        return "redirect:/persons";
+        return "redirect:/viewPersons";
 
     }
 
 
 
+    @RequestMapping(value="/saveAnimal", method = RequestMethod.POST)
+    public String saveAnimal(@ModelAttribute("animal") Animal animal){
+        animalsDAO.save(animal);
 
+        return "redirect:/viewAnimals";
+
+    }
 
 
     @RequestMapping("/new")
@@ -80,7 +116,7 @@ public class AddressController {
     public String save(@ModelAttribute("address") Address address){
         addressesDAO.save(address);
 
-        return "redirect:/HomePage";
+        return "redirect:/viewAddresses";
 
     }
     @RequestMapping("/")
@@ -102,6 +138,13 @@ public class AddressController {
         System.out.println(login.getPassword());
         return "redirect:/";
 
+    }
+
+    @RequestMapping("/backHomePage")
+    public String backHomePage(Model model){
+
+
+        return "redirect:/HomePage";
     }
 
 

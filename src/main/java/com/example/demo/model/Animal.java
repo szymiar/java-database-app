@@ -7,20 +7,21 @@ public class Animal {
     private String NAME;
     private String SPECIES;
     private String RACE;
-    private Date DATE_OF_BIRTH;
+    private String DATE_OF_BIRTH;
     private int PERSON_ID;
 
     public Animal() {
     }
-    
 
 
-    public Animal(int ANIMAL_ID, String NAME, String SPECIES, String RACE, Date DATE_OF_BIRTH) {
+
+    public Animal(int ANIMAL_ID, String NAME, String SPECIES, String RACE, String DATE_OF_BIRTH,int PERSON_ID) {
         this.ANIMAL_ID = ANIMAL_ID;
         this.NAME = NAME;
         this.SPECIES = SPECIES;
         this.RACE = RACE;
         this.DATE_OF_BIRTH = DATE_OF_BIRTH;
+        this.PERSON_ID= PERSON_ID;
     }
 
     public int getANIMAL_ID() {
@@ -55,11 +56,11 @@ public class Animal {
         this.RACE = RACE;
     }
 
-    public Date getDATE_OF_BIRTH() {
+    public String getDATE_OF_BIRTH() {
         return DATE_OF_BIRTH;
     }
 
-    public void setDATE_OF_BIRTH(Date DATE_OF_BIRTH) {
+    public void setDATE_OF_BIRTH(String DATE_OF_BIRTH) {
         this.DATE_OF_BIRTH = DATE_OF_BIRTH;
     }
 

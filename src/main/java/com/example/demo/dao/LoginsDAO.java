@@ -10,7 +10,7 @@ public class LoginsDAO {
 
 
     public boolean verify(Login login){
-        if(login.getLogin()== "admin" && login.getPassword()=="admin"){
+        if(login.getLogin().equals("admin")  && login.getPassword().equals("admin")){
             return true;
         }
         return false;

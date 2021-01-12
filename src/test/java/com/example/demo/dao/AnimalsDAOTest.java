@@ -36,7 +36,7 @@ class AnimalsDAOTest {
     void list() {
     }
 
-    @Test
+   /* @Test
     void save() {
         Animal animal = new Animal();
         DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
@@ -82,5 +82,5 @@ class AnimalsDAOTest {
 
     @Test
     void delete() {
-    }
+    }*/
 }
