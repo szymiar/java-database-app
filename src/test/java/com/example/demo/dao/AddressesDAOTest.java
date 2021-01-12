@@ -1,5 +1,6 @@
 package com.example.demo.dao;
 
+import com.example.demo.Manager.AdressManager;
 import com.example.demo.model.Address;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -46,10 +47,29 @@ class AddressesDAOTest {
 
     @Test
     void get() {
+        int id=7;
+        Address address=addressesDao.get(id);
+        assertNotNull(address);
+
+
+
     }
 
     @Test
     void update() {
+
+        Address address = new Address();
+        address.setADDRESS_ID(2);
+        address.setAPT_NUMBER("54");
+        address.setCITY("Warszawa");
+        address.setCODE("05-100");
+        address.setSTREET("Wyszynskiego");
+
+        addressesDao.update(address);
+
+
+
+
     }
 
     @Test

@@ -1,7 +1,7 @@
 package com.example.demo.dao;
 
 import com.example.demo.model.Address;
-import com.example.demo.model.Person;
+import com.example.demo.model.Animal;
 import com.example.demo.model.Person2;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,15 +11,12 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class Person2DAOTest {
+class AnimalsDAOTest {
 
-
-    private Person2DAO person2Dao;
+    private AnimalsDAO animalsDAO;
 
 
 
@@ -31,29 +28,32 @@ class Person2DAOTest {
         dataSource.setPassword("1234");
         dataSource.setDriverClassName("oracle.jdbc.OracleDriver");
 
-        person2Dao = new Person2DAO(new JdbcTemplate(dataSource));
+        animalsDAO = new AnimalsDAO(new JdbcTemplate(dataSource));
 
     }
 
     @Test
     void list() {
-        List<Person2> listPersons=person2Dao.list();
-        assertTrue(listPersons.isEmpty());
-
     }
 
     @Test
     void save() {
+        Animal animal = new Animal();
         DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-        Date myDate;
-        Person2 person = null;
         try {
-            person = new Person2(0,"Jan","TTT",formatter.parse("25-07-2000"),1);
+            animal.setDATE_OF_BIRTH(formatter.parse("25-07-2000"));
+
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        person2Dao.save(person);
 
+        animal.setANIMAL_ID(2);
+        animal.setNAME("Janek");
+        animal.setPERSON_ID(1);
+        animal.setRACE("Wiewiorka");
+        animal.setSPECIES("k");
+
+        animalsDAO.save(animal);
     }
 
     @Test
@@ -62,27 +62,25 @@ class Person2DAOTest {
 
     @Test
     void update() {
-
         DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-
-        Person2 person = new Person2();
+        Animal animal = new Animal();
+        animal.setANIMAL_ID(1);
+        animal.setNAME("Janek");
+        animal.setPERSON_ID(1);
+        animal.setRACE("Koks");
+        animal.setSPECIES("koks");
         try {
-            person.setBIRTH_DATE(formatter.parse("25-07-2000"));
+            animal.setDATE_OF_BIRTH(formatter.parse("25-07-2000"));
 
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        person.setADDRESS_ID(1);
-        person.setSURNAME("Kowal");
-        person.setNAME("Michal");
-        person.setPERSON_ID(1);
-        
+        animalsDAO.update(animal);
 
-        person2Dao.update(person);
+
     }
 
     @Test
     void delete() {
     }
-
 }

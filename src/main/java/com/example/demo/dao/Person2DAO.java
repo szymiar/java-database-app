@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -51,13 +52,18 @@ public class Person2DAO {
 
     }
 
-    public Address get(int id){
-
-        return null;
+    public Person2 get(int id){
+        Object[] args={id};
+        String sql="SELECT * FROM PERSONS WHERE PERSON_ID = "+args[0];
+        Person2 person =jdbcTemplate.queryForObject(sql,BeanPropertyRowMapper.newInstance(Person2.class));
+        return person;
     }
 
-    public void update(Address adress){
-
+    public void update(Person2 person){
+        String sql = "UPDATE PERSONS SET NAME=:NAME, SURNAME=:SURNAME, BIRTH_DATE=:BIRTH_DATE, ADDRESS_ID=:ADDRESS_ID WHERE PERSON_ID=:PERSON_ID";
+        BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(person);
+        NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate);
+        template.update(sql,param);
     }
 
     public void delete(int id){
