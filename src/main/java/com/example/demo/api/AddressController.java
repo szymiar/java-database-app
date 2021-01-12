@@ -40,9 +40,7 @@ public class AddressController {
 
     @RequestMapping("/persons")
     public String viewPersons(Model model){
-        String sql ="select * from PERSONS";
-        List<Person2> person2List =  jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Person2.class));
-        System.out.println(person2List.get(0).getSURNAME());
+        List<Person2> person2List =  person2DAO.list();
         model.addAttribute("person2List",person2List);
 
         return "persons";
@@ -59,7 +57,7 @@ public class AddressController {
 
     @RequestMapping(value="/savePerson", method = RequestMethod.POST)
     public String savePerson(@ModelAttribute("person") Person2 person){
-        Person2DAO.save(person);
+        person2DAO.save(person);
 
         return "redirect:/persons";
 

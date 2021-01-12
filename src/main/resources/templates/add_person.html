@@ -18,24 +18,24 @@
           method="post">
         <table border="1" cellpadding="10">
             <tr>
-                <td>STREET:</td>
+                <td>NAME:</td>
                 <td><input type="text" th:field="*{NAME}"></td>
             </tr>
             <tr>
-                <td>APT_NUMBER:</td>
+                <td>SURNAME:</td>
                 <td><input type="text" th:field="*{SURNAME}"></td>
             </tr>
             <tr>
-                <td>CODE:</td>
-                <td><input type="text" th:field="*{BIRTH_DATE}"></td>
+                <td>BIRTH_DATE:</td>
+                <td><input type="date" th:field="*{BIRTH_DATE}"></td>
             </tr>
             <tr>
-                <td>CITY:</td>
+                <td>ADDRESS_ID:</td>
                 <td><input type="text" th:field="*{ADDRESS_ID}"></td>
             </tr>
 
             <tr>
-                <td colspan = "2"><button type ="submit">save</button></td>
+                <td colspan = "2"><button type ="submit">savePerson</button></td>
             </tr>
 
 
