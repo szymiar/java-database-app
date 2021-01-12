@@ -40,10 +40,10 @@ public class AddressController {
 
     @RequestMapping("/persons")
     public String viewPersons(Model model){
-        List<Person2> person2List =  person2DAO.list();
-        model.addAttribute("person2List",person2List);
+            List<Person2> person2List =  person2DAO.list();
+            model.addAttribute("person2List",person2List);
 
-        return "persons";
+            return "persons";
 
     }
 
@@ -94,8 +94,12 @@ public class AddressController {
     public String login(@ModelAttribute("login") Login login){
 
         if(loginsDAO.verify(login)){
+            System.out.println(login.getLogin());
+            System.out.println(login.getPassword());
             return "redirect:/HomePage";
         }
+        System.out.println(login.getLogin());
+        System.out.println(login.getPassword());
         return "redirect:/";
 
     }

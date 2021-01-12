@@ -47,11 +47,9 @@ class Person2DAOTest {
         DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
         Date myDate;
         Person2 person = null;
-        try {
-            person = new Person2(10,"Jan","TTT",formatter.parse("25-07-2000"),1);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+
+            person = new Person2(10,"Jan","TTT","25-07-2000",1);
+
         person2Dao.save(person);
 
     }
@@ -66,12 +64,9 @@ class Person2DAOTest {
         DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
 
         Person2 person = new Person2();
-        try {
-            person.setBIRTH_DATE(formatter.parse("25-07-2000"));
 
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+            person.setBIRTH_DATE("25-07-2000");
+
         person.setADDRESS_ID(1);
         person.setSURNAME("Kowal");
         person.setNAME("Michal");
