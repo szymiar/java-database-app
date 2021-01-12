@@ -2,18 +2,26 @@ package com.example.demo.dao;
 
 import com.example.demo.model.Address;
 import com.example.demo.model.Person2;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Repository
+@Transactional
 public class Person2DAO {
 
 
 
+    @Autowired
     private JdbcTemplate jdbcTemplate;
+
+    public Person2DAO(){}
 
     public Person2DAO(JdbcTemplate jdbcTemplate){
         super();
@@ -25,7 +33,7 @@ public class Person2DAO {
 
     public List<Person2> list(){
         String sql="select * from PERSONS";
-        List<Person2> listAddress=jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Person2.class));
+        List<Person2> listAddress = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Person2.class));
 
         return listAddress;
 
