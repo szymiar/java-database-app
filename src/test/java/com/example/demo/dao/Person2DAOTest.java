@@ -48,7 +48,7 @@ class Person2DAOTest {
         Date myDate;
         Person2 person = null;
         try {
-            person = new Person2(0,"Jan","TTT",formatter.parse("25-07-2000"),1);
+            person = new Person2(10,"Jan","TTT",formatter.parse("25-07-2000"),1);
         } catch (ParseException e) {
             e.printStackTrace();
         }

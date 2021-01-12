@@ -22,7 +22,7 @@ public class AddressController {
 
     @Autowired
     private AddressesDAO addressesDAO;
-
+    @Autowired
     private Person2DAO person2DAO;
 
     private LoginsDAO loginsDAO= new LoginsDAO();
