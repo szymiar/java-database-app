@@ -32,9 +32,9 @@ public class Person2DAO {
 
     public List<Person2> list(){
         String sql="select * from PERSONS";
-        List<Person2> listAddress = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Person2.class));
+        List<Person2> listPerson = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Person2.class));
 
-        return listAddress;
+        return listPerson;
 
     }
 
