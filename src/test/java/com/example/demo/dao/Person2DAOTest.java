@@ -42,25 +42,25 @@ class Person2DAOTest {
 
     }
 
-    @Test
+    /*@Test
     void save() {
         DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
         Date myDate;
         Person2 person = null;
         try {
-            person = new Person2(10,"Jan","TTT",formatter.parse("25-07-2000"),1);
+            person = new Person2(0,"Jan","TTT",formatter.parse("25-07-2000"),1);
         } catch (ParseException e) {
             e.printStackTrace();
         }
         person2Dao.save(person);
 
     }
-
+*/
     @Test
     void get() {
     }
 
-    @Test
+   /* @Test
     void update() {
 
         DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
@@ -80,7 +80,7 @@ class Person2DAOTest {
 
         person2Dao.update(person);
     }
-
+*/
     @Test
     void delete() {
     }
