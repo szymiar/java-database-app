@@ -7,6 +7,8 @@ import com.example.demo.model.Address;
 import com.example.demo.model.Login;
 import com.example.demo.model.Person2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -24,6 +26,8 @@ public class AddressController {
     private Person2DAO person2DAO;
 
     private LoginsDAO loginsDAO= new LoginsDAO();
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
     @RequestMapping("/HomePage")
     public String viewHomePage(Model model){
@@ -36,8 +40,8 @@ public class AddressController {
 
     @RequestMapping("/persons")
     public String viewPersons(Model model){
-
-        List<Person2> person2List = person2DAO.list();
+        String sql ="select * from PERSONS";
+        List<Person2> person2List =  jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Person2.class));
         System.out.println(person2List.get(0).getSURNAME());
         model.addAttribute("person2List",person2List);
 

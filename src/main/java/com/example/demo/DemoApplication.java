@@ -29,10 +29,10 @@ public class DemoApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		String sql ="select * from PERSONS";
-		Person2DAO person2DAO= new Person2DAO();
+		//Person2DAO person2DAO= new Person2DAO();
 		//List<Person2> persons = person2DAO.list();
-		List<Person2> persons = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Person2.class));
-		System.out.println(persons.get(0).getSURNAME());
+		//List<Person2> persons = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Person2.class));
+		//System.out.println(persons.get(0).getSURNAME());
 
 
 	}
