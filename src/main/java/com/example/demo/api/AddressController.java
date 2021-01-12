@@ -49,6 +49,22 @@ public class AddressController {
 
     }
 
+    @RequestMapping("/addPerson")
+    public String showAddPerson(Model model){
+        Person2 person=new Person2();
+        model.addAttribute("person",person);
+
+        return "add_person";
+    }
+
+    @RequestMapping(value="/savePerson", method = RequestMethod.POST)
+    public String savePerson(@ModelAttribute("person") Person2 person){
+        Person2DAO.save(person);
+
+        return "redirect:/persons";
+
+    }
+
 
 
 

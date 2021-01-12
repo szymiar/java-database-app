@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>New Person</title>
+</head>
+
+<body>
+<div align="center">
+    <h1>Add new person</h1>
+
+    <br />
+
+
+    <form action="#" th:action="@{/savePerson}" th:object="${person}"
+          method="post">
+        <table border="1" cellpadding="10">
+            <tr>
+                <td>STREET:</td>
+                <td><input type="text" th:field="*{NAME}"></td>
+            </tr>
+            <tr>
+                <td>APT_NUMBER:</td>
+                <td><input type="text" th:field="*{SURNAME}"></td>
+            </tr>
+            <tr>
+                <td>CODE:</td>
+                <td><input type="text" th:field="*{BIRTH_DATE}"></td>
+            </tr>
+            <tr>
+                <td>CITY:</td>
+                <td><input type="text" th:field="*{ADDRESS_ID}"></td>
+            </tr>
+
+            <tr>
+                <td colspan = "2"><button type ="submit">save</button></td>
+            </tr>
+
+
+        </table>
+    </form>
+</div>
+
+
+</body>

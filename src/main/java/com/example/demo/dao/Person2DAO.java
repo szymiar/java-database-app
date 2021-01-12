@@ -22,8 +22,6 @@ public class Person2DAO {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    public Person2DAO(){}
-
     public Person2DAO(JdbcTemplate jdbcTemplate){
         super();
         this.jdbcTemplate=jdbcTemplate;
