@@ -74,5 +74,8 @@ class AddressesDAOTest {
 
     @Test
     void delete() {
+        int id=4;
+        addressesDao.delete(id);
+
     }
 }

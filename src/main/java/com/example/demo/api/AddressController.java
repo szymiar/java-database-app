@@ -119,14 +119,14 @@ public class AddressController {
         return "redirect:/viewAddresses";
 
     }
-    @RequestMapping("/")
+ /*   @RequestMapping("/")
     public String loginPage(Model model){
         Login login = new Login();
         model.addAttribute("login",login);
         return "login_screen";
     }
-
-    @RequestMapping(value="/login", method = RequestMethod.POST)
+/*
+/*    @RequestMapping(value="/login", method = RequestMethod.POST)
     public String login(@ModelAttribute("login") Login login){
 
         if(loginsDAO.verify(login)){
@@ -139,7 +139,7 @@ public class AddressController {
         return "redirect:/";
 
     }
-
+*/
     @RequestMapping("/backHomePage")
     public String backHomePage(Model model){
 

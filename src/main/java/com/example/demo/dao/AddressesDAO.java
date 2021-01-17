@@ -60,6 +60,8 @@ public class AddressesDAO {
     }
 
     public void delete(int id){
+        String sql= "DELETE FROM ADDRESSES WHERE ADDRESS_ID = ?";
+        jdbcTemplate.update(sql,id);
 
     }
 

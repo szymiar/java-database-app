@@ -65,6 +65,8 @@ public class Person2DAO {
     }
 
     public void delete(int id){
+        String sql= "DELETE FROM PERSONS WHERE PERSON_ID = ?";
+        jdbcTemplate.update(sql,id);
 
     }
 }

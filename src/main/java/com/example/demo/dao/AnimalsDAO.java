@@ -62,6 +62,9 @@ public class AnimalsDAO {
 
     public void delete(int id){
 
+        String sql= "DELETE FROM ANIMALS WHERE ANIMAL_ID = ?";
+        jdbcTemplate.update(sql,id);
+
     }
 
 

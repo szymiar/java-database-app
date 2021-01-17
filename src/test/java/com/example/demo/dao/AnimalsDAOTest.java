@@ -79,8 +79,11 @@ class AnimalsDAOTest {
 
 
     }
-
+*/
     @Test
     void delete() {
-    }*/
+        int id=1;
+        animalsDAO.delete(id);
+
+    }
 }
