@@ -22,13 +22,29 @@ tr:nth-child(even) {background-color: #f2f2f2}
 <body>
     <div align="center">
         <h1>Welcome</h1>
-
-        <a href = "/viewAddresses">Show addresses</a>
         <br />
-        <a href = "/viewPersons">Show persons</a>
-        <br />
-        <a href = "/viewAnimals">Show animals</a>
 
+        <form action="#" th:action="@{/viewAddresses}">
+            <tr>
+                <td colspan = "2"><button type ="submit">Show Addresses</button></td>
+            </tr>
+        </form>
+
+        <br />
+        <form action="#" th:action="@{/viewPersons}">
+            <tr>
+                <td colspan = "2"><button type ="submit">Show Persons</button></td>
+            </tr>
+        </form>
+
+        <br />
+        <form action="#" th:action="@{/viewAnimals}">
+            <tr>
+                <td colspan = "2"><button type ="submit">Show Animals</button></td>
+            </tr>
+        </form>
+
+        <br />
     </div>
 </body>
 </html>
