@@ -217,6 +217,7 @@ public class AddressController {
     @RequestMapping("/")
     public String loginPage(Model model){
         Login login = new Login();
+        //info
         model.addAttribute("login",login);
         return "login_screen";
     }
