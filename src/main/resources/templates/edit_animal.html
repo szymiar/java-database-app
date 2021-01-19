@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Animal</title>
+</head>
+
+<body>
+<div align="center">
+    <h1>Edit animal</h1>
+
+    <br />
+
+
+    <form action="#" th:action="@{/saveEditAnimal}" th:object="${animal}"
+          method="post">
+        <table border="1" cellpadding="10">
+            <tr>
+                <td>ANIMAL_ID:</td>
+                <td><input type="text" th:field="*{ANIMAL_ID}"></td>
+            </tr>
+
+
+            <tr>
+                <td>NAME:</td>
+                <td><input type="text" th:field="*{NAME}"></td>
+            </tr>
+            <tr>
+                <td>SPECIES:</td>
+                <td><input type="text" th:field="*{SPECIES}"></td>
+            </tr>
+            <tr>
+                <td>RACE:</td>
+                <td><input type="text" th:field="*{RACE}"></td>
+            </tr>
+            <tr>
+                <td>DATE_OF_BIRTH:</td>
+                <td><input type="text" th:field="*{DATE_OF_BIRTH}"></td>
+            </tr>
+            <tr>
+                <td>PERSON_ID:</td>
+                <td><input type="text" th:field="*{PERSON_ID}"></td>
+            </tr>
+
+            <tr>
+                <td colspan = "2"><button type ="submit">saveEditAnimal</button></td>
+            </tr>
+
+
+        </table>
+    </form>
+</div>
+
+
+</body>

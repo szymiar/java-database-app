@@ -4,19 +4,25 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>New Address</title>
+    <title>Edit Address</title>
 </head>
 
 <body>
 <div align="center">
-    <h1>Add new address</h1>
+    <h1>Edit address</h1>
 
     <br />
 
 
-    <form action="#" th:action="@{/saveAddress}" th:object="${address}"
+    <form action="#" th:action="@{/saveEditAddress}" th:object="${address}"
           method="post">
         <table border="1" cellpadding="10">
+            <tr>
+                <td>ADDRESS_ID:</td>
+                <td><input type="text" th:field="*{ADDRESS_ID}"></td>
+            </tr>
+
+
             <tr>
                 <td>STREET:</td>
                 <td><input type="text" th:field="*{STREET}"></td>
@@ -35,7 +41,7 @@
             </tr>
 
             <tr>
-                <td colspan = "2"><button type ="submit">saveAddress</button></td>
+                <td colspan = "2"><button type ="submit">saveEditAddress</button></td>
             </tr>
 
 
