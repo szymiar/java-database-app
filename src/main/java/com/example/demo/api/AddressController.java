@@ -214,6 +214,15 @@ public class AddressController {
         return "redirect:/viewAddresses";
     }
 
+
+    @RequestMapping("/backHomePage")
+    public String backHomePage(Model model){
+
+
+        return "redirect:/HomePage";
+    }
+
+
     @RequestMapping("/")
     public String loginPage(Model model){
         Login login = new Login();
@@ -221,6 +230,9 @@ public class AddressController {
         model.addAttribute("login",login);
         return "login_screen";
     }
+
+
+
 
     @RequestMapping(value="/login", method = RequestMethod.POST)
     public String login(@ModelAttribute("login") Login login){
@@ -236,12 +248,7 @@ public class AddressController {
 
     }
 
-    @RequestMapping("/backHomePage")
-    public String backHomePage(Model model){
 
-
-        return "redirect:/HomePage";
-    }
 
 
 }
