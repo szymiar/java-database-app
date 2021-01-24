@@ -152,7 +152,7 @@ public class AddressController {
         if(animal.getDATE_OF_BIRTH().isBlank()| animal.getNAME().isBlank() |animal.getRACE().isBlank()|animal.getSPECIES().isBlank()) {
 
 
-            return "redirect:/animalBlank";
+            return "redirect:/blankPage";
         }
 
         else {
@@ -172,7 +172,7 @@ public class AddressController {
 
         if(person.getBIRTH_DATE().isBlank()|person.getNAME().isBlank()|person.getSURNAME().isBlank()){
 
-            return "redirect:/personBlank";
+            return "redirect:/blankPage";
         }
         else{
         person2DAO.update(person);
@@ -184,7 +184,7 @@ public class AddressController {
 
         if(address.getAPT_NUMBER().isBlank()| address.getCITY().isBlank() |address.getCODE().isBlank()|address.getSTREET().isBlank()) {
 
-            return "redirect:/addressBlank";
+            return "redirect:/blankPage";
         }
         else{
 
@@ -277,7 +277,7 @@ public class AddressController {
 
         if(person.getBIRTH_DATE().isBlank()|person.getNAME().isBlank()|person.getSURNAME().isBlank()){
 
-            return "redirect:/personBlank";
+            return "redirect:/blankPage";
         }
         else {
             person2DAO.save(person);
@@ -291,7 +291,7 @@ public class AddressController {
 
         if(address.getAPT_NUMBER().isBlank()| address.getCITY().isBlank() |address.getCODE().isBlank()|address.getSTREET().isBlank()) {
 
-            return "redirect:/addressBlank";
+            return "redirect:/blankPage";
         }
         else {
         addressesDAO.save(address);
@@ -313,7 +313,7 @@ public class AddressController {
 
         if(animal.getDATE_OF_BIRTH().isBlank()| animal.getNAME().isBlank() |animal.getRACE().isBlank()|animal.getSPECIES().isBlank()) {
 
-            return "redirect:/animalBlank";
+            return "redirect:/blankPage";
         }
         else {
         animalsDAO.save(animal);
@@ -321,6 +321,12 @@ public class AddressController {
         }
 
     }
+    @RequestMapping("/blankPage")
+    public String blankpage(Model model){
+        return "blankPage";
+    }
+
+
 
 
     @RequestMapping("/backHomePage")
