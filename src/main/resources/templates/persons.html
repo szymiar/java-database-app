@@ -50,7 +50,7 @@ tr:nth-child(even) {background-color: #f2f2f2}
             <td th:text="${PERSON.ADDRESS_ID}">ADDRESS_ID</td>
             <td>
                 <a th:href="@{'/editPerson/' + ${PERSON.PERSON_ID}}">Edit</a>
-                <a th:href="@{'/deletePerson/' + ${PERSON.PERSON_ID}}">Delete</a>
+                <a th:href="@{'/saveDeletePerson/' + ${PERSON.PERSON_ID}}">Delete</a>
             </td>
         </tr>
         </tbody>
