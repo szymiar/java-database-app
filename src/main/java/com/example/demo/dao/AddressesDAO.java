@@ -2,6 +2,7 @@ package com.example.demo.dao;
 
 import com.example.demo.model.Address;
 
+import com.example.demo.model.Person2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -27,6 +28,21 @@ public class AddressesDAO {
 
     public List<Address> list(){
         String sql="select * from ADDRESSES";
+        List<Address> listAddress=jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Address.class));
+
+        return listAddress;
+
+    }
+
+    public List<Address> listPerson(int id){
+
+        Object[] args={id};
+        String sql1="select * from PERSONS where PERSON_ID = "+args[0];
+        List<Person2> a=jdbcTemplate.query(sql1, BeanPropertyRowMapper.newInstance(Person2.class));
+        Person2 person=a.get(0);
+        int value=person.getADDRESS_ID();
+        Object[] args2={value};
+        String sql="select * from ADDRESSES where ADDRESS_ID = "+args2[0];
         List<Address> listAddress=jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Address.class));
 
         return listAddress;

@@ -33,6 +33,15 @@ public class AnimalsDAO {
 
     }
 
+    public List<Animal> listPerson(int id){
+        Object[] args={id};
+        String sql="select * from ANIMALS where PERSON_ID = "+args[0];
+        List<Animal> listAnimal=jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Animal.class));
+
+        return listAnimal;
+
+    }
+
     public void save(Animal animal){
 
         SimpleJdbcInsert insertActor=new SimpleJdbcInsert(jdbcTemplate);

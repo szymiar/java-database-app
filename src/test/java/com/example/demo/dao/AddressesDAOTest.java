@@ -33,8 +33,8 @@ class AddressesDAOTest {
     @Test
     void list() {
         List<Address> listAddresses=addressesDao.list();
-        assertTrue(listAddresses.isEmpty());
 
+        assertTrue(listAddresses.isEmpty());
     }
 
     @Test
