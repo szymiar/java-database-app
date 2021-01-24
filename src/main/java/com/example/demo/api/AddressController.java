@@ -132,21 +132,54 @@ public class AddressController {
 
     @RequestMapping(value="/saveEditAnimal", method = RequestMethod.POST)
     public String saveEditAnimal(@ModelAttribute("animal") Animal animal){
-        animalsDAO.update(animal);
-        return "redirect:/viewAnimals";
+
+        if(person2DAO.listPerson(animal.getPERSON_ID()).isEmpty()){
+
+
+            return "redirect:/noPerson";
+        }
+
+        if(animal.getDATE_OF_BIRTH().isBlank()| animal.getNAME().isBlank() |animal.getRACE().isBlank()|animal.getSPECIES().isBlank()) {
+
+
+            return "redirect:/animalBlank";
+        }
+
+        else {
+            animalsDAO.update(animal);
+            return "redirect:/viewAnimals";
+        }
     }
 
     @RequestMapping(value="/saveEditPerson", method = RequestMethod.POST)
     public String saveEditPerson(@ModelAttribute("person") Person2 person){
+
+        if(addressesDAO.listAddressId(person.getADDRESS_ID()).isEmpty()){
+
+
+            return "redirect:/noAddress";
+        }
+
+        if(person.getBIRTH_DATE().isBlank()|person.getNAME().isBlank()|person.getSURNAME().isBlank()){
+
+            return "redirect:/personBlank";
+        }
+        else{
         person2DAO.update(person);
-        return "redirect:/viewPersons";
+        return "redirect:/viewPersons";}
     }
 
     @RequestMapping(value="/saveEditAddress", method = RequestMethod.POST)
     public String saveEditAddress(@ModelAttribute("address") Address address){
 
+        if(address.getAPT_NUMBER().isBlank()| address.getCITY().isBlank() |address.getCODE().isBlank()|address.getSTREET().isBlank()) {
+
+            return "redirect:/addressBlank";
+        }
+        else{
+
         addressesDAO.update(address);
-        return "redirect:/viewAddresses";
+        return "redirect:/viewAddresses";}
     }
 
     @RequestMapping(value="/saveDeletePerson/{id}")
@@ -225,24 +258,57 @@ public class AddressController {
 
     @RequestMapping(value="/savePerson", method = RequestMethod.POST)
     public String savePerson(@ModelAttribute("person") Person2 person){
-        person2DAO.save(person);
 
-        return "redirect:/viewPersons";
+        if(addressesDAO.listAddressId(person.getADDRESS_ID()).isEmpty()){
 
+            System.out.println("haha");
+            return "redirect:/noAddress";
+        }
+
+        if(person.getBIRTH_DATE().isBlank()|person.getNAME().isBlank()|person.getSURNAME().isBlank()){
+
+            return "redirect:/personBlank";
+        }
+        else {
+            person2DAO.save(person);
+
+            return "redirect:/viewPersons";
+        }
     }
 
     @RequestMapping(value="/saveAddress", method = RequestMethod.POST)
     public String saveAddress(@ModelAttribute("address") Address address){
+
+        if(address.getAPT_NUMBER().isBlank()| address.getCITY().isBlank() |address.getCODE().isBlank()|address.getSTREET().isBlank()) {
+
+            return "redirect:/addressBlank";
+        }
+        else {
         addressesDAO.save(address);
 
         return "redirect:/viewAddresses";
+        }
     }
 
 
     @RequestMapping(value="/saveAnimal", method = RequestMethod.POST)
     public String saveAnimal(@ModelAttribute("animal") Animal animal){
+        if(person2DAO.listPerson(animal.getPERSON_ID()).isEmpty()){
+
+
+            return "redirect:/noPerson";
+        }
+
+
+
+        if(animal.getDATE_OF_BIRTH().isBlank()| animal.getNAME().isBlank() |animal.getRACE().isBlank()|animal.getSPECIES().isBlank()) {
+
+            return "redirect:/animalBlank";
+        }
+        else {
         animalsDAO.save(animal);
         return "redirect:/viewAnimals";
+        }
 
     }
 
