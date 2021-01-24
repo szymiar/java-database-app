@@ -48,7 +48,7 @@ public class AddressController {
     public String viewAddresses(Model model){
         List<Address> listAddress;
         if(currentUserAuthorities().equals("ROLE_ADMIN")){
-        listAddress=addressesDAO.list();}
+            listAddress=addressesDAO.list();}
         else{
             listAddress=addressesDAO.listPerson(currentUserid());
         }
@@ -68,8 +68,8 @@ public class AddressController {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         System.out.println("tearz");
-        System.out.println(authentication.getAuthorities());
-        return authentication.getAuthorities().toString();
+        System.out.println(authentication.getAuthorities().toArray()[0].toString());
+        return authentication.getAuthorities().toArray()[0].toString();
     }
 
     @RequestMapping("/viewPersons")
@@ -78,9 +78,9 @@ public class AddressController {
         List<Person2> person2List;
 
         if(currentUserAuthorities().equals("ROLE_ADMIN")){
-        person2List =  person2DAO.list();}
+            person2List =  person2DAO.list();}
         else{
-           person2List=person2DAO.listPerson(currentUserid());}
+            person2List=person2DAO.listPerson(currentUserid());}
         model.addAttribute("person2List",person2List);
 
         return "persons";
@@ -91,7 +91,7 @@ public class AddressController {
     @RequestMapping("/viewAnimals")
     public String viewAnimals(Model model){
         List<Animal> animalsList;
-        animalsList =  animalsDAO.list();
+
 
         if(currentUserAuthorities().equals("ROLE_ADMIN")){
             animalsList =  animalsDAO.list();
@@ -130,27 +130,10 @@ public class AddressController {
         return "add_person";
     }
 
-
-    @RequestMapping("/editAnimal")
-    public String showEditAnimal(Model model){
-        Animal animal=new Animal();
-        model.addAttribute("animal",animal);
-
-        return "edit_animal";
-    }
-
     @RequestMapping(value="/saveEditAnimal", method = RequestMethod.POST)
     public String saveEditAnimal(@ModelAttribute("animal") Animal animal){
         animalsDAO.update(animal);
         return "redirect:/viewAnimals";
-    }
-
-    @RequestMapping("/editPerson")
-    public String showEditPerson(Model model){
-        Person2 person=new Person2();
-        model.addAttribute("person",person);
-
-        return "edit_person";
     }
 
     @RequestMapping(value="/saveEditPerson", method = RequestMethod.POST)
@@ -159,53 +142,43 @@ public class AddressController {
         return "redirect:/viewPersons";
     }
 
-
-
-
-
-
-    @RequestMapping("/editAddress")
-    public String showEditAddress(Model model){
-        Address address=new Address();
-        model.addAttribute("address",address);
-
-        return "edit_address";
-    }
-
     @RequestMapping(value="/saveEditAddress", method = RequestMethod.POST)
     public String saveEditAddress(@ModelAttribute("address") Address address){
+
         addressesDAO.update(address);
         return "redirect:/viewAddresses";
     }
 
-
-    @RequestMapping("/deletePerson")
-    public String showDeletePerson(Model model){
-
-        int id = 0;
-        model.addAttribute("id",id);
-
-        return "delete_person";
-    }
-
-    @RequestMapping(value="/saveDeletePerson", method = RequestMethod.POST)
-    public String saveDeletePerson(@ModelAttribute("id") int id){
+    @RequestMapping(value="/saveDeletePerson/{id}")
+    public String saveDeletePerson(@PathVariable(name="id") int id){
+        if (animalsDAO.listPerson(id).isEmpty()){
         person2DAO.delete(id);
-        return "redirect:/viewPersons";
+        return "redirect:/viewPersons";}
+        else{
+            System.out.println("blad2");
+            return "redirect:/viewAddresses";
+
+        }
     }
 
-    @RequestMapping("/deleteAddress")
-    public String showDeleteAddress(Model model){
-        int id = 0;
-        model.addAttribute("id",id);
 
-        return "delete_Address";
-    }
-
-    @RequestMapping(value="/saveDeleteAddress", method = RequestMethod.POST)
-    public String saveDeleteAddress(@ModelAttribute("id") int id){
+    @RequestMapping("/saveDeleteAddress/{id}")
+    public String saveDeleteAddress(@PathVariable(name="id") int id){
+        if(addressesDAO.listPerson2(id).isEmpty()){
         addressesDAO.delete(id);
-        return "redirect:/viewAddresses";
+        return "redirect:/viewAddresses";}
+        else{
+            System.out.println("blad");
+            return "redirect:/viewAddresses";
+
+        }
+    }
+
+
+    @RequestMapping("/saveDeleteAnimal/{id}")
+    public String saveDeleteAnimal(@PathVariable(name="id") int id){
+        animalsDAO.delete(id);
+        return "redirect:/viewAnimals";
     }
 
     @RequestMapping("/user")
@@ -217,40 +190,7 @@ public class AddressController {
         return principal.getName();
     }
 
-    @RequestMapping("/deleteAnimal")
-    public String showDeleteAnimal(Model model){
-        int id = 0;
-        model.addAttribute("id",id);
 
-        return "delete_animal";
-    }
-
-    @RequestMapping(value="/saveDeleteAnimal", method = RequestMethod.POST)
-    public String saveDeleteAnimal(@ModelAttribute("id") int id){
-        animalsDAO.delete(id);
-        return "redirect:/viewAnimals";
-    }
-
-
-
-    @RequestMapping(value="/savePerson", method = RequestMethod.POST)
-    public String savePerson(@ModelAttribute("person") Person2 person){
-        person2DAO.save(person);
-
-        return "redirect:/viewPersons";
-
-    }
-
-
-
-    @RequestMapping(value="/saveAnimal", method = RequestMethod.POST)
-    public String saveAnimal(@ModelAttribute("animal") Animal animal){
-        animalsDAO.save(animal);
-
-        System.out.print("dziala");
-        return "redirect:/viewAnimals";
-
-    }
 
 
     @RequestMapping("/editAddress/{id}")
@@ -281,12 +221,27 @@ public class AddressController {
     }
 
 
+    @RequestMapping(value="/savePerson", method = RequestMethod.POST)
+    public String savePerson(@ModelAttribute("person") Person2 person){
+        person2DAO.save(person);
+
+        return "redirect:/viewPersons";
+
+    }
 
     @RequestMapping(value="/saveAddress", method = RequestMethod.POST)
     public String saveAddress(@ModelAttribute("address") Address address){
         addressesDAO.save(address);
 
         return "redirect:/viewAddresses";
+    }
+
+
+    @RequestMapping(value="/saveAnimal", method = RequestMethod.POST)
+    public String saveAnimal(@ModelAttribute("animal") Animal animal){
+        animalsDAO.save(animal);
+        return "redirect:/viewAnimals";
+
     }
 
 
