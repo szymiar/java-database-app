@@ -48,6 +48,16 @@ public class AddressesDAO {
         return listAddress;
 
     }
+    public List<Person2> listPerson2(int id){
+
+        Object[] args={id};
+        String sql1="select * from PERSONS where ADDRESS_ID = "+args[0];
+        List<Person2> a=jdbcTemplate.query(sql1, BeanPropertyRowMapper.newInstance(Person2.class));
+
+
+        return a;
+
+    }
 
     public void save(Address address){
 

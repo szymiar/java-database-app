@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <title>New Animal</title>
 </head>
-
+<h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
 <body>
 <div align="center">
     <h1>Add new animal</h1>
@@ -31,7 +31,7 @@
             </tr>
             <tr>
                 <td>Birth Date:</td>
-                <td><input type="text" th:field="*{DATE_OF_BIRTH}"></td>
+                <td><input type="date" th:field="*{DATE_OF_BIRTH}"></td>
             </tr>
             <tr>
                 <td>Person_id:</td>

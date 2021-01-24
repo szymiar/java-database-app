@@ -57,6 +57,7 @@ public class Animal {
     }
 
     public String getDATE_OF_BIRTH() {
+        System.out.println(DATE_OF_BIRTH);
         return DATE_OF_BIRTH;
     }
 

@@ -58,6 +58,12 @@ public class AddressController {
 
     }
 
+    @RequestMapping("/login")
+    public String login(Model model){
+        return "redirect:/login";
+    }
+
+
     private int currentUserid() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String name=authentication.getName();
@@ -71,6 +77,10 @@ public class AddressController {
         System.out.println(authentication.getAuthorities().toArray()[0].toString());
         return authentication.getAuthorities().toArray()[0].toString();
     }
+
+
+
+
 
     @RequestMapping("/viewPersons")
     public String viewPersons(Model model){
@@ -144,21 +154,36 @@ public class AddressController {
 
     @RequestMapping(value="/saveEditAddress", method = RequestMethod.POST)
     public String saveEditAddress(@ModelAttribute("address") Address address){
+
         addressesDAO.update(address);
         return "redirect:/viewAddresses";
     }
 
     @RequestMapping(value="/saveDeletePerson/{id}")
     public String saveDeletePerson(@PathVariable(name="id") int id){
+        if (animalsDAO.listPerson(id).isEmpty()){
         person2DAO.delete(id);
-        return "redirect:/viewPersons";
+        return "redirect:/viewPersons";}
+        else{
+            System.out.println("blad2");
+            //co najmniej 1 zwierzak jest przypisany do tej osoby
+            return "redirect:/errorPerson";
+
+        }
     }
 
 
     @RequestMapping("/saveDeleteAddress/{id}")
     public String saveDeleteAddress(@PathVariable(name="id") int id){
+        if(addressesDAO.listPerson2(id).isEmpty()){
         addressesDAO.delete(id);
-        return "redirect:/viewAddresses";
+        return "redirect:/viewAddresses";}
+        else{
+            System.out.println("blad");
+            // ten adres jest przypisany do jakiejs osoby
+            return "redirect:/errorAddress";
+
+        }
     }
 
 

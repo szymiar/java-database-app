@@ -19,13 +19,21 @@ color: white;
 tr:nth-child(even) {background-color: #f2f2f2}
 </style>
 </head>
+
+<h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
+<br />
+<form action="#" th:action="@{/logout}">
+    <tr>
+        <td colspan = "2"><button type ="submit">Log out</button></td>
+    </tr>
+</form>
 <body>
 <div align="center">
     <h1>PERSONS</h1>
 
+
+
     <a href = "/addPerson">Enter new Person</a>
-    <a href = "/editPerson">Edit person information</a>
-    <a href = "/deletePerson">Delete Person</a>
 
 
 
