@@ -13,6 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @SpringBootApplication
@@ -23,6 +24,7 @@ public class DemoApplication implements CommandLineRunner {
 	public static void main(String[] args) {
 
 		SpringApplication.run(DemoApplication.class, args);
+
 	}
 
 

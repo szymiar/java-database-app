@@ -38,6 +38,22 @@ public class Person2DAO {
 
     }
 
+    public List<Person2> listPerson(int id){
+
+        Object[] args={id};
+        String sql1="select * from PERSONS where PERSON_ID = "+args[0];
+        List<Person2> listPerson=jdbcTemplate.query(sql1, BeanPropertyRowMapper.newInstance(Person2.class));
+        return listPerson;
+    }
+
+    public List<Person2> listAddress(int id){
+        Object[] args={id};
+        String sql="select * from PERSONS where ADDRESS_ID = "+args[0];
+        List<Person2> listPerson = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Person2.class));
+
+        return listPerson;
+
+    }
 
     public void save(Person2 person){
 
