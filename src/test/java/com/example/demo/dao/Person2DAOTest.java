@@ -83,6 +83,8 @@ class Person2DAOTest {
 */
     @Test
     void delete() {
+        int id=2;
+        person2Dao.delete(id);
     }
 
 }

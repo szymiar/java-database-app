@@ -3,7 +3,10 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>People and their animals</title>
+
+
     <style>
+
 table {
 border-collapse: collapse;
 width: 100%;
@@ -37,6 +40,7 @@ tr:nth-child(even) {background-color: #f2f2f2}
             <th>APT_NUMBER</th>
             <th>CODE</th>
             <th>CITY</th>
+            <th>Action</th>
         </tr>
         </thead>
 
@@ -47,6 +51,12 @@ tr:nth-child(even) {background-color: #f2f2f2}
             <td th:text="${ADDRESS.APT_NUMBER}">APT_NUMBER</td>
             <td th:text="${ADDRESS.CODE}">CODE</td>
             <td th:text="${ADDRESS.CITY}">CITY</td>
+
+            <td>
+                <a th:href="@{'/editAddress/' + ${ADDRESS.ADDRESS_ID}}">Edit</a>
+                <a th:href="@{'/deleteAddress/' + ${ADDRESS.ADDRESS_ID}}">Delete</a>
+            </td>
+
         </tr>
         </tbody>
 

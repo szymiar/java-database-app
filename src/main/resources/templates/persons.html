@@ -37,6 +37,7 @@ tr:nth-child(even) {background-color: #f2f2f2}
             <th>SURNAME</th>
             <th>BIRTH_DATE</th>
             <th>ADDRESS_ID</th>
+            <th>Action</th>
         </tr>
         </thead>
 
@@ -47,18 +48,14 @@ tr:nth-child(even) {background-color: #f2f2f2}
             <td th:text="${PERSON.SURNAME}">SURNAME</td>
             <td th:text="${PERSON.BIRTH_DATE}">BIRTH_DATE</td>
             <td th:text="${PERSON.ADDRESS_ID}">ADDRESS_ID</td>
+            <td>
+                <a th:href="@{'/editPerson/' + ${PERSON.PERSON_ID}}">Edit</a>
+                <a th:href="@{'/deletePerson/' + ${PERSON.PERSON_ID}}">Delete</a>
+            </td>
         </tr>
         </tbody>
 
-    </table>
-    <table width="200" border="1" class="table">
-        <tr>
-            <td><a href="siemano">&nbsp;</a></td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-    </table>
-
+</table>
 
     <form action="#" th:action="@{/backHomePage}">
         <tr>

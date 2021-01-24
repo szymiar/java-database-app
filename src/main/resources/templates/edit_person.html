@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Edit Person</title>
+    <title>Edit person</title>
 </head>
 
 <body>
@@ -18,8 +18,8 @@
           method="post">
         <table border="1" cellpadding="10">
             <tr>
-                <td>PERSON_ID:</td>
-                <td><input type="text" th:field="*{PERSON_ID}"></td>
+                <td>PERSON_ID</td>
+                <td><input type="text" th:field="*{PERSON_ID}" readonly="readonly"></td>
             </tr>
 
 
@@ -33,7 +33,7 @@
             </tr>
             <tr>
                 <td>BIRTH_DATE:</td>
-                <td><input type="date" th:field="*{BIRTH_DATE}"></td>
+                <td><input type="text" th:field="*{BIRTH_DATE}"></td>
             </tr>
             <tr>
                 <td>ADDRESS_ID:</td>
@@ -51,4 +51,3 @@
 
 
 </body>
-

@@ -37,6 +37,7 @@ tr:nth-child(even) {background-color: #f2f2f2}
             <th>RACE</th>
             <th>DATE_OF_BIRTH</th>
             <th>PERSON_ID</th>
+            <th>Action</th>
         </tr>
         </thead>
 
@@ -48,6 +49,11 @@ tr:nth-child(even) {background-color: #f2f2f2}
             <td th:text="${ANIMAL.RACE}">RACE</td>
             <td th:text="${ANIMAL.DATE_OF_BIRTH}">DATE_OF_BIRTH</td>
             <td th:text="${ANIMAL.PERSON_ID}">PERSON_ID</td>
+            <td>
+                <a th:href="@{'/editAnimal/' + ${ANIMAL.ANIMAL_ID}}">Edit</a>
+                <a th:href="@{'/deleteAnimal/' + ${ANIMAL.ANIMAL_ID}}">Delete</a>
+            </td>
+
         </tr>
         </tbody>
 
