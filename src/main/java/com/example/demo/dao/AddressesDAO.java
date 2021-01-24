@@ -69,11 +69,23 @@ public class AddressesDAO {
         insertActor.execute(param);
 
     }
+    public List<Person2> listAddressId(int id){
+
+        Object[] args={id};
+        String sql1="select * from ADDRESSES where ADDRESS_ID = "+args[0];
+        List<Person2> a=jdbcTemplate.query(sql1, BeanPropertyRowMapper.newInstance(Person2.class));
+
+
+        return a;
+
+    }
+
 
     public Address get(int id){
     Object[] args={id};
     String sql="SELECT * FROM ADDRESSES WHERE ADDRESS_ID = "+args[0];
     Address address =jdbcTemplate.queryForObject(sql,BeanPropertyRowMapper.newInstance(Address.class));
+
         return address;
     }
 
