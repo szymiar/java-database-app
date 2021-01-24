@@ -184,6 +184,7 @@ public class AddressController {
     public String saveAnimal(@ModelAttribute("animal") Animal animal){
         animalsDAO.save(animal);
 
+        System.out.print("dziala");
         return "redirect:/viewAnimals";
 
     }
