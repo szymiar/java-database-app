@@ -1,20 +1,10 @@
 package com.example.demo;
 
-import com.example.demo.dao.Person2DAO;
-import com.example.demo.model.Address;
-
-import com.example.demo.model.Animal;
-import com.example.demo.model.Person;
-import com.example.demo.model.Person2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-
-import javax.servlet.http.HttpServletRequest;
-import java.util.List;
 
 @SpringBootApplication
 public class DemoApplication implements CommandLineRunner {

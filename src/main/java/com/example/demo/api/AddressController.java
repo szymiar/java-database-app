@@ -192,6 +192,15 @@ public class AddressController {
         return "redirect:/viewAddresses";}
     }
 
+    @RequestMapping("/noPerson")
+    public String noPerson(Model model){
+        return "noPerson";
+    }
+    @RequestMapping("/noAddress")
+    public String noAddress(Model model){
+        return "noAddress";
+    }
+
     @RequestMapping(value="/saveDeletePerson/{id}")
     public String saveDeletePerson(@PathVariable(name="id") int id){
         if (animalsDAO.listPerson(id).isEmpty()){
@@ -217,6 +226,14 @@ public class AddressController {
             return "redirect:/errorAddress";
 
         }
+    }
+    @RequestMapping("/errorPerson")
+    public String errorPerson(Model model){
+        return "errorPerson";
+    }
+    @RequestMapping("/errorAddress")
+    public String errorAddress(Model model){
+        return "errorAddress";
     }
 
 
