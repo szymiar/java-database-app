@@ -1,10 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>People and their animals</title>
+    <style>
+table {
+border-collapse: collapse;
+width: 100%;
+color: #588c7e;
+font-family: monospace;
+font-size: 25px;
+text-align: left;
+}
+th {
+background-color: #588c7e;
+color: white;
+}
+tr:nth-child(even) {background-color: #f2f2f2}
+</style>
 </head>
+<h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
 <body>
+<div align="center">
+    <h1>Fail, Person is used by at least one animal </h1>
 
+
+    <br/>
+
+    <form action="#" th:action="@{/HomePage}">
+        <tr>
+            <td colspan = "2"><button type ="submit">Home Page</button></td>
+        </tr>
+    </form>
+</div>
 </body>
 </html>
