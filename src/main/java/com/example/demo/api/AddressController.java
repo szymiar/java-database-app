@@ -156,7 +156,8 @@ public class AddressController {
         return "redirect:/viewPersons";}
         else{
             System.out.println("blad2");
-            return "redirect:/viewAddresses";
+            //co najmniej 1 zwierzak jest przypisany do tej osoby
+            return "redirect:/errorPerson";
 
         }
     }
@@ -169,7 +170,8 @@ public class AddressController {
         return "redirect:/viewAddresses";}
         else{
             System.out.println("blad");
-            return "redirect:/viewAddresses";
+            // ten adres jest przypisany do jakiejs osoby
+            return "redirect:/errorAddress";
 
         }
     }
