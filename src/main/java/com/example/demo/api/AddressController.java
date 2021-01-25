@@ -227,14 +227,7 @@ public class AddressController {
 
         }
     }
-    @RequestMapping("/errorPerson")
-    public String errorPerson(Model model){
-        return "errorPerson";
-    }
-    @RequestMapping("/errorAddress")
-    public String errorAddress(Model model){
-        return "errorAddress";
-    }
+
 
 
     @RequestMapping("/saveDeleteAnimal/{id}")
@@ -352,15 +345,6 @@ public class AddressController {
         return "errorAddress";
     }
 
-
-    @RequestMapping("/noPerson")
-    public String noPerson(Model model){
-        return "noPerson";
-    }
-    @RequestMapping("/noAddress")
-    public String noAddress(Model model){
-        return "noAddress";
-    }
 
 
     @RequestMapping("/backHomePage")
