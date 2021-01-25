@@ -67,6 +67,8 @@ public class AddressController {
     private int currentUserid() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String name=authentication.getName();
+        System.out.println(name);
+        System.out.println(usersDao.getPERSON_ID(name));
         return usersDao.getPERSON_ID(name);
     }
 
