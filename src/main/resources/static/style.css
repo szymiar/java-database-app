@@ -134,50 +134,27 @@ list-style-type: none;
   background-color: #333;
 
 }
-.dol{
+
+
+.przycisk5{
 margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #653;
-  height: 50vh
+  background-color: white;
+  height: 10vh;
+  display: flex;
+    align-items: center;
+    justify-content: center;
 
 }
-.przycisk2{
-margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #222;
-  height: 76vh
-
-}
-.przycisk2 button{
-background-color: #12;
+.przycisk5 button{
+background-color: white;
 height:80px;
   width:300px
+   align-items: center;
+      justify-content: center;
+
 }
 
 
-.okienko_logowania{
-display: block;
-  font-size: 1em;
-  margin-top: 0.67em;
-  margin-bottom: 0.67em;
-  margin-left: 0.67em;
-  margin-right: 0.67em;
-  font-weight: bold;
-  border: 3px solid Red;
-  width: 20%
-}
-.border1{
-
-display: block;
-  font-size: 1em;
-  margin-top: 0.67em;
-  margin-bottom: 0.67em;
-  margin-left: 0.67em;
-  margin-right: 0.67em;
-  font-weight: bold;
-  border: 3px solid Red;
-  width: 20%
-}
 

@@ -1,13 +1,54 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="UTF-8">
     <title>Edit person</title>
+    <link th:href="@{/style.css}" rel="stylesheet" type="text/css">
+    <style>
+table {
+border-collapse: collapse;
+width: 100%;
+color: #588c7e;
+font-family: monospace;
+font-size: 25px;
+text-align: left;
+}
+th {
+background-color: #588c7e;
+color: white;
+}
+tr:nth-child(even) {background-color: #f2f2f2}
+</style>
 </head>
-<h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
 <body>
+<div class="u1">
+
+    <div sec:authorize="hasAnyRole('USER', 'ADMIN')" class="welcome">
+        <h3 th:inline="text">user: [[${#httpServletRequest.remoteUser}]]</h3>
+    </div>
+    <div sec:authorize="hasAnyRole('ANONYMOUS')">
+        <form action="#" th:action="@{/login}">
+            <tr>
+                <td colspan = "2"><button class="przycisk" type ="submit">Log in</button></td>
+            </tr>
+        </form>
+    </div>
+
+
+    <div sec:authorize="hasAnyRole('USER', 'ADMIN')">
+        <form action="#" th:action="@{/logout}">
+            <tr>
+                <td colspan = "2"><button class="przycisk" type ="submit">Log out</button></td>
+            </tr>
+        </form>
+    </div>
+</div>
+
+
+
+
 <div align="center">
     <h1>Edit person</h1>
 
@@ -47,6 +88,13 @@
 
         </table>
     </form>
+    <div align="center" class="przycisk3">
+        <form action="#" th:action="@{/backHomePage}">
+            <tr>
+                <td colspan = "2"><button type ="submit"><h4>Home Page</h4></button></td>
+            </tr>
+        </form>
+    </div>
 </div>
 
 
