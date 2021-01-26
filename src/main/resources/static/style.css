@@ -18,6 +18,11 @@ h4 {
   font:20px monospace;
   color:#588c7e;
 }
+h5 {
+  text-align: center;
+  font:20px monospace;
+  color: white;
+}
 h1 {
   text-align: center;
   margin-top: 0;
@@ -97,7 +102,7 @@ margin: 0;
 .przycisk3 button{
 background-color: white;
 height:80px;
-  width:300px
+  width:300px;
 }
 
 
