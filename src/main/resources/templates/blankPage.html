@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <title>People and their animals</title>
+    <link th:href="@{/style.css}" rel="stylesheet" type="text/css">
     <style>
 table {
 border-collapse: collapse;
@@ -19,9 +20,38 @@ color: white;
 tr:nth-child(even) {background-color: #f2f2f2}
 </style>
 </head>
-<h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
+
 <body>
-<div align="center">
+
+<div class="u1">
+
+
+    <div sec:authorize="hasAnyRole('ANONYMOUS')">
+        <form action="#" th:action="@{/login}">
+            <tr>
+                <td colspan = "2"><button class="przycisk" type ="submit">Log in</button></td>
+            </tr>
+        </form>
+    </div>
+
+
+    <div sec:authorize="hasAnyRole('USER', 'ADMIN')">
+        <form action="#" th:action="@{/logout}">
+            <tr>
+                <td colspan = "2"><button class="przycisk" type ="submit">Log out</button></td>
+            </tr>
+        </form>
+    </div>
+</div>
+<div sec:authorize="hasAnyRole('USER', 'ADMIN')" class="welcome">
+    <h3 th:inline="text">user: [[${#httpServletRequest.remoteUser}]]</h3>
+</div>
+
+<div sec:authorize="hasAnyRole('ANONYMOUS')" class="welcome">
+    <h1>Welcome</h1>
+</div>
+
+<div align="center" class="przycisk2">
     <h1>Fail, one or more blank values </h1>
 
 

@@ -88,7 +88,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/saveDeleteAnimal").hasRole("ADMIN")
                 .antMatchers("/saveDeletePerson").hasRole("ADMIN")
                 .and()
-                .formLogin().permitAll();
+                .formLogin().permitAll()
+                .and()
+                .logout()
+                .logoutSuccessUrl("/HomePage");
 
 
 
