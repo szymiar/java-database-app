@@ -47,6 +47,9 @@ public class AddressController {
     @RequestMapping("/viewAddresses")
     public String viewAddresses(Model model){
         List<Address> listAddress;
+        if(currentUserAuthorities().equals("ROLE_ANONYMOUS")){
+            return "error";
+        }
         if(currentUserAuthorities().equals("ROLE_ADMIN")){
             listAddress=addressesDAO.list();}
         else{
@@ -86,7 +89,8 @@ public class AddressController {
 
     @RequestMapping("/viewPersons")
     public String viewPersons(Model model){
-
+        if(currentUserAuthorities().equals("ROLE_ANONYMOUS")){
+            return "error";}
         List<Person2> person2List;
 
         if(currentUserAuthorities().equals("ROLE_ADMIN")){
@@ -102,6 +106,8 @@ public class AddressController {
 
     @RequestMapping("/viewAnimals")
     public String viewAnimals(Model model){
+        if(currentUserAuthorities().equals("ROLE_ANONYMOUS")){
+            return "error";}
         List<Animal> animalsList;
 
 
