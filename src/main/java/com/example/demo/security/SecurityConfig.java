@@ -28,38 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UsersDao usersDao;
 
-/*
-    @Bean
-    public UserDetailsService userDetailsService(){
 
-        List<com.example.demo.model.User> listUser=usersDao.list();
-
-    UserDetails user1 = User.withDefaultPasswordEncoder()
-            .username(listUser.get(0).getUSERNAME())
-            .password(listUser.get(0).getPassword())
-            .roles("USER")
-            .build();
-        System.out.println(listUser.get(0).getUSERNAME());
-        System.out.println(listUser.get(0).getPassword());
-
-        UserDetails user17 = User.withDefaultPasswordEncoder()
-                .username("user17")
-                .password("user17")
-                .roles("USER")
-                .build();
-
-
-        UserDetails admin = User.withDefaultPasswordEncoder()
-                .username("admin")
-                .password("admin")
-                .roles("ADMIN")
-                .build();
-
-
-    return new InMemoryUserDetailsManager(user1,admin,user17);
-}
-
-*/
     @Autowired
     public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication().passwordEncoder(new BCryptPasswordEncoder())
@@ -92,9 +61,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .logoutSuccessUrl("/HomePage");
-
-
-
 
 
     }

@@ -43,7 +43,7 @@
 			<groupId>com.oracle</groupId>
 			<artifactId>ojdbc10</artifactId>
 			<scope>system</scope>
-			<systemPath>C:/Users/kalus/OneDrive/Pulpit/ojdbc/ojdbc10-full/ojdbc10.jar</systemPath>
+			<systemPath>D:/DataBaseRelated/ojdbc10.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

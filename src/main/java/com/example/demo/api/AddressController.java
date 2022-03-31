@@ -78,7 +78,6 @@ public class AddressController {
     private String currentUserAuthorities() {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        System.out.println("tearz");
         System.out.println(authentication.getAuthorities().toArray()[0].toString());
         return authentication.getAuthorities().toArray()[0].toString();
     }
